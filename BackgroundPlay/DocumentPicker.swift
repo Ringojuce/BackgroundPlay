@@ -35,10 +35,12 @@ struct DocumentPicker: UIViewControllerRepresentable {
         func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentsAt urls: [URL]) {
             guard let selectedFileURL = urls.first else { return }
             parent.selectedFile = selectedFileURL
+            print("Selected file URL: \(selectedFileURL)") // ここでファイルURLを確認
         }
 
         func documentPickerWasCancelled(_ controller: UIDocumentPickerViewController) {
             print("Document picker was cancelled")
         }
     }
+
 }

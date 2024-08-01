@@ -34,8 +34,12 @@ struct ContentView: View {
 
     func playAudio(url: URL) {
         do {
+            let fileExists = FileManager.default.fileExists(atPath: url.path)
+            print("File exists: \(fileExists)")
+            
             audioPlayer = try AVAudioPlayer(contentsOf: url)
             audioPlayer?.play()
+            print("Playing audio from: \(url)") // 再生開始メッセージを出力
         } catch {
             print("Failed to initialize audio player: \(error)")
         }
