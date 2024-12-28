@@ -6,49 +6,76 @@
 //
 
 import SwiftUI
-import AVFoundation
-//久々にコミットしたよ
+import AVKit
+
 struct ContentView: View {
-    @State private var showDocumentPicker = false
-    @State private var selectedFile: URL?
-    @State private var audioPlayer: AVAudioPlayer?
+    @State private var files: [URL] = []
+    @State private var selectedURL: URL?
+    private let viewModel = AudioPlayerViewModel()
 
     var body: some View {
         VStack {
-            Button("Select File") {
-                showDocumentPicker = true
-            }
-            .sheet(isPresented: $showDocumentPicker) {
-                DocumentPicker(selectedFile: $selectedFile)
+            if let selectedURL {
+                Text("Selected: \(selectedURL.lastPathComponent)")
+                Button("Play") {
+                    viewModel.playMedia(from: selectedURL)
+                }
+            } else {
+                Text("No file selected")
             }
 
-            if let fileURL = selectedFile {
-                Text("Selected file: \(fileURL.lastPathComponent)")
-                Button("Play Audio") {
-                    playAudio(url: fileURL)
+            List(files, id: \.self) { file in
+                Button(action: {
+                    selectedURL = file
+                }) {
+                    Text(file.lastPathComponent)
                 }
+            }
+            .onAppear(perform: loadFiles)
+
+            Button("Refresh") {
+                loadFiles()
             }
         }
         .padding()
     }
 
-    func playAudio(url: URL) {
-        do {
-            let fileExists = FileManager.default.fileExists(atPath: url.path)
-            print("File exists: \(fileExists)")
-            
-            audioPlayer = try AVAudioPlayer(contentsOf: url)
-            audioPlayer?.play()
-            print("Playing audio from: \(url)") // 再生開始メッセージを出力
-        } catch {
-            print("Failed to initialize audio player: \(error)")
+    func loadFiles() {
+        let documentsURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first
+        if let documentsURL {
+            do {
+                files = try FileManager.default.contentsOfDirectory(at: documentsURL, includingPropertiesForKeys: nil, options: .skipsHiddenFiles)
+            } catch {
+                print("Error loading files: \(error.localizedDescription)")
+            }
+        }
+    }
+    
+    func createCustomDirectory() {
+        let customDirectoryURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first?.appendingPathComponent("CustomFolder")
+        if let customDirectoryURL, !FileManager.default.fileExists(atPath: customDirectoryURL.path) {
+            do {
+                try FileManager.default.createDirectory(at: customDirectoryURL, withIntermediateDirectories: true, attributes: nil)
+                print("Custom directory created at \(customDirectoryURL)")
+            } catch {
+                print("Error creating custom directory: \(error.localizedDescription)")
+            }
         }
     }
 }
 
+class AudioPlayerViewModel {
+    var player: AVPlayer?
+
+    func playMedia(from url: URL) {
+        player = AVPlayer(url: url)
+        player?.play()
+    }
+}
+
+///プレビュー
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
     }
 }
-

@@ -14,7 +14,6 @@
 		8420B2A42C57C63C00739F7A /* BackgroundPlayTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8420B2A32C57C63C00739F7A /* BackgroundPlayTests.swift */; };
 		8420B2AE2C57C63C00739F7A /* BackgroundPlayUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8420B2AD2C57C63C00739F7A /* BackgroundPlayUITests.swift */; };
 		8420B2B02C57C63C00739F7A /* BackgroundPlayUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8420B2AF2C57C63C00739F7A /* BackgroundPlayUITestsLaunchTests.swift */; };
-		8420B2BD2C57C83100739F7A /* DocumentPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8420B2BC2C57C83100739F7A /* DocumentPicker.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,7 +45,6 @@
 		8420B2A92C57C63C00739F7A /* BackgroundPlayUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BackgroundPlayUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8420B2AD2C57C63C00739F7A /* BackgroundPlayUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundPlayUITests.swift; sourceTree = "<group>"; };
 		8420B2AF2C57C63C00739F7A /* BackgroundPlayUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundPlayUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		8420B2BC2C57C83100739F7A /* DocumentPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentPicker.swift; sourceTree = "<group>"; };
 		8479FD432C5D0A8300293036 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -84,6 +82,7 @@
 				8420B28F2C57C63700739F7A /* Products */,
 			);
 			sourceTree = "<group>";
+			usesTabs = 0;
 		};
 		8420B28F2C57C63700739F7A /* Products */ = {
 			isa = PBXGroup;
@@ -101,7 +100,6 @@
 				8479FD432C5D0A8300293036 /* Info.plist */,
 				8420B2912C57C63700739F7A /* BackgroundPlayApp.swift */,
 				8420B2932C57C63700739F7A /* ContentView.swift */,
-				8420B2BC2C57C83100739F7A /* DocumentPicker.swift */,
 				8420B2952C57C63B00739F7A /* Assets.xcassets */,
 				8420B2972C57C63B00739F7A /* BackgroundPlay.entitlements */,
 				8420B2982C57C63B00739F7A /* Preview Content */,
@@ -268,7 +266,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				8420B2942C57C63700739F7A /* ContentView.swift in Sources */,
-				8420B2BD2C57C83100739F7A /* DocumentPicker.swift in Sources */,
 				8420B2922C57C63700739F7A /* BackgroundPlayApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -426,6 +423,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = BackgroundPlay/BackgroundPlay.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"BackgroundPlay/Preview Content\"";
@@ -454,7 +452,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "lmrlfil-icloud.com.BackgroundPlay";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -467,6 +465,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = BackgroundPlay/BackgroundPlay.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"BackgroundPlay/Preview Content\"";
@@ -495,7 +494,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "lmrlfil-icloud.com.BackgroundPlay";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
