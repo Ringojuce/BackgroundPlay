@@ -12,7 +12,7 @@ import AVFoundation
 struct BackgroundPlayAppApp: App {    
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ContentView()//初期画面
         }
     }
 }

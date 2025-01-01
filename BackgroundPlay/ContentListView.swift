@@ -7,12 +7,20 @@
 
 import SwiftUI
 
+//指定したフォルダ直下ファイル一覧を動的に表示
 struct ContentListView: View {
-    var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
-    }
+    let items: [String]
+
+        var body: some View {
+            List(items, id: \ .self) { item in
+                Text(item)
+                    .font(.body)
+            }
+            .navigationTitle("再生ファイル一覧")
+        }
 }
 
-#Preview {
-    ContentListView()
-}
+//
+//#Preview {
+//    ContentListView()
+//}

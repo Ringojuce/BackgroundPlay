@@ -14,6 +14,8 @@
 		8420B2A42C57C63C00739F7A /* BackgroundPlayTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8420B2A32C57C63C00739F7A /* BackgroundPlayTests.swift */; };
 		8420B2AE2C57C63C00739F7A /* BackgroundPlayUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8420B2AD2C57C63C00739F7A /* BackgroundPlayUITests.swift */; };
 		8420B2B02C57C63C00739F7A /* BackgroundPlayUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8420B2AF2C57C63C00739F7A /* BackgroundPlayUITestsLaunchTests.swift */; };
+		84D8DC9C2D24295E00B1980C /* ContentListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D8DC9B2D24295E00B1980C /* ContentListView.swift */; };
+		84D8DC9E2D24315A00B1980C /* ContentAudioControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D8DC9D2D24315A00B1980C /* ContentAudioControl.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,6 +48,8 @@
 		8420B2AD2C57C63C00739F7A /* BackgroundPlayUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundPlayUITests.swift; sourceTree = "<group>"; };
 		8420B2AF2C57C63C00739F7A /* BackgroundPlayUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundPlayUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		8479FD432C5D0A8300293036 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		84D8DC9B2D24295E00B1980C /* ContentListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentListView.swift; sourceTree = "<group>"; };
+		84D8DC9D2D24315A00B1980C /* ContentAudioControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentAudioControl.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,8 +102,10 @@
 			isa = PBXGroup;
 			children = (
 				8479FD432C5D0A8300293036 /* Info.plist */,
+				84D8DC9D2D24315A00B1980C /* ContentAudioControl.swift */,
 				8420B2912C57C63700739F7A /* BackgroundPlayApp.swift */,
 				8420B2932C57C63700739F7A /* ContentView.swift */,
+				84D8DC9B2D24295E00B1980C /* ContentListView.swift */,
 				8420B2952C57C63B00739F7A /* Assets.xcassets */,
 				8420B2972C57C63B00739F7A /* BackgroundPlay.entitlements */,
 				8420B2982C57C63B00739F7A /* Preview Content */,
@@ -267,6 +273,8 @@
 			files = (
 				8420B2942C57C63700739F7A /* ContentView.swift in Sources */,
 				8420B2922C57C63700739F7A /* BackgroundPlayApp.swift in Sources */,
+				84D8DC9E2D24315A00B1980C /* ContentAudioControl.swift in Sources */,
+				84D8DC9C2D24295E00B1980C /* ContentListView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

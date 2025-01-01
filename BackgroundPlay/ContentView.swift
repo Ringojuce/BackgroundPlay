@@ -6,71 +6,45 @@
 //
 
 import SwiftUI
-import AVKit
 
 struct ContentView: View {
-    @State private var files: [URL] = []
-    @State private var selectedURL: URL?
-    private let viewModel = AudioPlayerViewModel()
-
     var body: some View {
-        VStack {
-            if let selectedURL {
-                Text("Selected: \(selectedURL.lastPathComponent)")
-                Button("Play") {
-                    viewModel.playMedia(from: selectedURL)
+        NavigationView {
+            VStack(spacing: 20) {
+                NavigationLink(destination: ContentListView(items: ["りんご", "レモン", "アボガド"])) {
+                    HStack {
+                        Image(systemName: "icloud")
+                            .font(.title)
+                        Text("iCloud File")
+                    }
+                    .font(.headline)
+                    .frame(maxWidth: .infinity)
+                    .padding()
+                    .background(Color.blue)
+                    .cornerRadius(10)
+                    .foregroundColor(.white)
                 }
-            } else {
-                Text("No file selected")
-            }
-
-            List(files, id: \.self) { file in
-                Button(action: {
-                    selectedURL = file
-                }) {
-                    Text(file.lastPathComponent)
+                
+                NavigationLink(destination: ContentListView(items: ["犬", "猫", "ゴリラ"])) {
+                    HStack {
+                        Image(systemName: "externaldrive.fill")
+                            .font(.title)
+                        Text("Local File")
+                    }
+                    .font(.headline)
+                    .frame(maxWidth: .infinity)
+                    .padding()
+                    .background(Color.green)
+                    .cornerRadius(10)
+                    .foregroundColor(.white)
                 }
             }
-            .onAppear(perform: loadFiles)
-
-            Button("Refresh") {
-                loadFiles()
-            }
-        }
-        .padding()
-    }
-
-    func loadFiles() {
-        let documentsURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first
-        if let documentsURL {
-            do {
-                files = try FileManager.default.contentsOfDirectory(at: documentsURL, includingPropertiesForKeys: nil, options: .skipsHiddenFiles)
-            } catch {
-                print("Error loading files: \(error.localizedDescription)")
-            }
+            .padding()
+            .navigationTitle("初期画面")
         }
     }
     
-    func createCustomDirectory() {
-        let customDirectoryURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first?.appendingPathComponent("CustomFolder")
-        if let customDirectoryURL, !FileManager.default.fileExists(atPath: customDirectoryURL.path) {
-            do {
-                try FileManager.default.createDirectory(at: customDirectoryURL, withIntermediateDirectories: true, attributes: nil)
-                print("Custom directory created at \(customDirectoryURL)")
-            } catch {
-                print("Error creating custom directory: \(error.localizedDescription)")
-            }
-        }
-    }
-}
-
-class AudioPlayerViewModel {
-    var player: AVPlayer?
-
-    func playMedia(from url: URL) {
-        player = AVPlayer(url: url)
-        player?.play()
-    }
+    
 }
 
 ///プレビュー
