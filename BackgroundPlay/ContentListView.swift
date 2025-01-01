@@ -19,8 +19,3 @@ struct ContentListView: View {
             .navigationTitle("再生ファイル一覧")
         }
 }
-
-//
-//#Preview {
-//    ContentListView()
-//}
