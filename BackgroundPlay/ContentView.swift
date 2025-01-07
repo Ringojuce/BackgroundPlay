@@ -25,7 +25,7 @@ struct ContentView: View {
                     .foregroundColor(.white)
                 }
                 
-                NavigationLink(destination: ContentListView(items: ["犬", "猫", "ゴリラ"])) {
+                NavigationLink(destination: ContentListView(items: getFetchFileMetadata(for: .documentDirectory))) {
                     HStack {
                         Image(systemName: "externaldrive.fill")
                             .font(.title)
@@ -40,11 +40,25 @@ struct ContentView: View {
                 }
             }
             .padding()
-            .navigationTitle("初期画面")
+            .navigationTitle("ファイルアクセス画面")
         }
     }
     
-    
+    // iCloud またはローカルからデータを取得
+    private func getFetchFileMetadata(for directory: FileManager.SearchPathDirectory) -> [String]
+    {
+        let documentDirectory = FileManager.default.urls(for: directory, in: .userDomainMask).first!
+        var fileNames: [String] = []
+        
+        do {
+            let files = try FileManager.default.contentsOfDirectory(at: documentDirectory, includingPropertiesForKeys: nil)
+            fileNames = files.map { $0.lastPathComponent } // ファイル名のみ取得
+        } catch {
+            print("Error accessing files: \(error)")
+        }
+        
+        return fileNames
+    }
 }
 
 ///プレビュー

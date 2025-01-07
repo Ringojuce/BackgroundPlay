@@ -11,11 +11,16 @@ import SwiftUI
 struct ContentListView: View {
     let items: [String]
 
-        var body: some View {
-            List(items, id: \ .self) { item in
-                Text(item)
-                    .font(.body)
-            }
-            .navigationTitle("再生ファイル一覧")
+    var body: some View {
+        if items.isEmpty {
+            Text("再生ファイルがありません")
+                .font(.headline)
         }
+        
+        List(items, id: \ .self) { item in
+            Text(item)
+                .font(.body)
+        }
+        .navigationTitle("再生ファイル一覧")
+    }
 }
